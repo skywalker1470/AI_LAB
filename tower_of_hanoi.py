@@ -3,7 +3,7 @@ def hanoi(n,source,middle,dest):
         print(f"Move disk {n} to {source} -> {dest}")
         return
     hanoi(n-1 , source , dest , middle)
-    print(f"Move disk {n} to {source} -> {dest}")
+    print(f"Move disk {n} from {source} -> {dest}")
     hanoi(n-1 , middle , source  , dest)
     return
 
