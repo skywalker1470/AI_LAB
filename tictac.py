@@ -19,7 +19,7 @@ def check_my_board(num1,num2,board,player):
         if(i==2):
             column = True
     #checking diagnols \
-        diagnol1 = False
+    diagnol1 = False
     if(num1==num2):
         for i in range(3):
             if(board[(num1+i)%3][(num2+i)%3] != sign ):
