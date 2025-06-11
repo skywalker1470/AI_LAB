@@ -30,13 +30,11 @@ def check_my_board(num1,num2,board,player):
     diagnol2 = False           
     if(num1+num2 == 2):
         for i in range(3):
-            column_no = num2-i
-            if(column_no<0):
-                column_no = 2
-            if(board[(num1+i)%3][column_no] != sign):
+            if(board[i][2-i]!= sign):
                 break
             if(i==2):
                 diagnol2 = True
+
             
     ans = row_f or column or diagnol1 or diagnol2 
     return ans
