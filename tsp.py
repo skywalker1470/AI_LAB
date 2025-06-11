@@ -1,26 +1,31 @@
 from itertools import permutations
-def tsp(graph , cities):
-    best = []
-    minDist = float('inf')
+
+def tsp(graph , start , cities):
+   
+    minDist = float("inf") 
+    best_path = []
     for perm in permutations(cities):
-        from_city = 0 
-        currentDist = 0 
-        for to in perm:
-            currentDist += graph[from_city][to]
-            from_city = to
-        currentDist += graph[from_city][0]
+        from_city = start
+        dist = 0 
+        for to_city in perm:
+            dist = graph[from_city][to_city]
+            from_city = to_city
         
-        if (currentDist < minDist) : 
-            minDist = currentDist 
-            best = perm
-    print(f"The best path {perm}")
-    return minDist    
-graph = [
+        dist += graph[from_city][start]
+        if(dist<minDist):
+            minDist = dist
+            best_path = perm
+    #pls format the output i am too sleepy to format fml
+    print(f"{minDist} , 0-->{best_path}-->0")
+    return
+
+graph =[
     [0, 10, 13, 17],
     [10, 0, 8, 6],
     [13, 8, 0, 10],
     [17, 6, 10, 0]
 ]
-cities = [i for i in range(1, len(graph))] 
-minDist = tsp(graph , cities )
-print(f"The minimum distance is : {minDist}")   
+cities = []
+for i in range(1,4):
+    cities.append(i)
+tsp(graph , 0 , cities)
