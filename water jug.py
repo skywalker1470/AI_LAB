@@ -1,24 +1,30 @@
-def water_jug (cap_a , cap_b  , target):
-    a , b = 0 , 0
-    steps = 0
+def water_jug (cap_a , cap_b , target):
+    a = 0 
+    b  = 0
+    visited = set()
+
     while True:
-        print(f"Step {steps}: Jug A = {a} liters, Jug B = {b} liters")
-        if a == target or b == target:
-            print("Goal achieved!")
+        if (a,b) in visited:
+            print("Loop detected ! No solution !")
             break
-        if a == 0:
+        visited.add((a,b))
+        if(a==target or b==target):
+            print("Target amount measured !!")
+            break
+        if(a==0):
             a = cap_a
-            print(f"Fill Jug A to {cap_a} liters.")
-        elif b == cap_b:
+            print("Fill jug A")
+        elif(b==cap_b):
             b = 0
-            print(f"Empty Jug B.")
+            print("Empty jug B")
         else:
-            transfer = min(a, cap_b - b)
+            transfer = min (a , cap_b - b)
             a -= transfer
             b += transfer
-            print(f"Pour {transfer} liters from Jug A to Jug B.")
+            print(f"Transfer {transfer}L from A to B")
+        
+    return
 
-        steps += 1
         
         
 cap_a = int(input("Enter the Jug A capacity: "))
